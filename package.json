@@ -1,0 +1,59 @@
+{
+  "name": "bot_megah",
+  "version": "1.0.3",
+  "description": "Bot privado",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "start": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/endblack/megah.git"
+  },
+  "keywords": [
+    "megah",
+    "bot",
+    "whatsapp"
+  ],
+  "author": "Max Senpai",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/endblack/megah/issues"
+  },
+  "homepage": "https://github.com/endblack/megah#readme",
+  "dependencies": {
+    "@adiwajshing/baileys": "^3.4.1",
+    "async": "^3.2.0",
+    "axios": "^0.21.1",
+    "brainly-scraper": "^1.0.3",
+    "cfonts": "^2.9.2",
+    "dotenv": "^10.0.0",
+    "escape-string-regexp": "^1.0.5",
+    "express": "^4.17.1",
+    "fake-useragent": "^1.0.1",
+    "file-type": "^16.5.0",
+    "fluent-ffmpeg": "^2.1.2",
+    "form-data": "^4.0.0",
+    "fs-extra": "^10.0.0",
+    "general-search-engine": "^1.4.0",
+    "got": "^11.8.2",
+    "image-to-base64": "^2.2.0",
+    "imgbb-uploader": "^1.3.3",
+    "moment-timezone": "^0.5.33",
+    "ms": "^2.1.3",
+    "multistream": "^4.1.0",
+    "needle": "^2.6.0",
+    "node-fetch": "^2.6.1",
+    "node-gtts": "^2.0.2",
+    "nodemailer": "^6.6.1",
+    "parse-ms": "^2.1.0",
+    "performance-now": "^2.1.0",
+    "qrcode-terminal": "^0.12.0",
+    "remove.bg": "^1.3.0",
+    "request": "^2.88.2",
+    "spinnies": "^0.5.1"
+  }
+}
