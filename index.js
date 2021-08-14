@@ -25,6 +25,25 @@ const { color, bgcolor } = require('./lib/color')
 const speed = require('performance-now')
 const { wait, simih, getBuffer, h2k, generateMessageID, mail2, getGroupAdmins, mail, getRandom, banner, start, info, success, close } = require('./lib/functions')
 const { ind } = require('./language')
+const express = require('express');
+const app = express();
+const PORT = process.env.PORT || 8080
+
+app.get('/', (request, response) => {
+  console.log("bot online");
+  response.sendStatus(200);
+});
+
+app.get('/info', (req, res) => {
+  res.json({
+    status: 'rodando normalmente'
+  })
+})
+
+app.listen(PORT, () => {
+console.log('okok '+PORT)
+})
+
 apiz = `vrMSPgXFfqY87hnTJ87arA9N2LN`
 const packID = 'com.snowcorp.stickerly.android.stickercontentprovider b5e7275f-f1de-4137-961f-57becfad34f2'
 const playstore = 'https://play.google.com/store/apps/details?id=com.dts.freefireth'
