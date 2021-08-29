@@ -268,6 +268,17 @@ client.on('chat-update', async (mek) => {
 					buffer = await getBuffer(ppUrl)
 					client.sendMessage(from, buffer, image, {quoted: mek, contextInfo: { forwardingScore: 508, isForwarded: true, mentionedJid: [me2]}, caption: teks})
 					break
+					case 'email':
+                    client.updatePresence(from, Presence.composing)
+                    if (!isRegistered) return reply(ind.noregis(pushname))
+                    if (!q.includes('/')) return  reply('está errado, faz assim:\n\n!email gostosa.ofc@gmail.com/eae gostosa :3')
+					if (args.length < 1) return reply('qual o texto?')
+					agia = `${body.slice(7)}`
+			        eml = agia.split("/")[0];
+			        teks = agia.split("/")[1];
+					anu = await mail(teks, eml)
+					reply(`Pronto, enviei sua msg.`)
+					break
                   case 'converter':
 				case 'toimg':
 				if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
@@ -320,7 +331,25 @@ break
 					if (!isOwner) return reply(ind.ownerb())
 					prefix = args[0]
 					reply(`*Prefixo alterado para:* ${prefix}`)
-					break 
+					break
+					case 'bc': 
+					if (!isOwner) return reply(ind.ownerb()) 
+					if (args.length < 1) return reply('.......')
+					anu = await client.chats.all()
+					if (isMedia && !mek.message.videoMessage || isQuotedImage) {
+						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+						buff = await client.downloadMediaMessage(encmedia)
+						for (let _ of anu) {
+							client.sendMessage(_.jid, buff, image, {caption: `❮ 𝙋𝙀𝙎𝘼?? 𝘽??𝙊𝘼𝘿𝘾𝘼𝙎𝙏 ❯\n\n${body.slice(4)}`})
+						}
+						reply('𝙨𝙪𝙘𝙘𝙚𝙨𝙨 𝙗𝙧𝙤𝙖𝙙𝙘𝙖𝙨𝙩 ')
+					} else {
+						for (let _ of anu) {
+							sendMess(_.jid, `*「BOT_MEGAH」*\n\n${body.slice(4)}`)
+						}
+						reply('transmitido ')
+					}
+					break
 				case 'link':
 				    if (!isGroup) return reply(ind.groupo()) 
 				    	if (!isGroupAdmins) return reply(ind.admin())
@@ -588,6 +617,15 @@ break
                     break
 
 		    default:
+		    
+		    if (!isCmd && budy != undefined) {
+                  if (isGroup) return console.log(color('Nao permitido em grupo','white'))
+                  client.updatePresence(from, Presence.composing)
+						console.log(color(budy,'yellow'))
+						muehe = await simih(budy)
+						reply(muehe)
+						console.log(color(muehe,'cyan'))
+					}
 		    
 		    }
 } catch (e) {
