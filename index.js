@@ -231,6 +231,15 @@ client.on('chat-update', async (mek) => {
 				  case 'me':	    
                 reply('Okok')
                   break
+                  case 'info':
+					me = client.user
+					me2 = client.user.jid
+					uptime = process.uptime()
+					ppUrl = await client.getProfilePicture()
+					teks = `➽Nome do bot: ${client.user.name}\n➽Número: @${me2.split('@')[0]}\n➽Total Block: ${blocked.length}\n➽Tempo ativo:\n${kyun(uptime)}`
+					buffer = await getBuffer(ppUrl)
+					client.sendMessage(from, buffer, image, {quoted: mek, contextInfo: { forwardingScore: 508, isForwarded: true, mentionedJid: [me2]}, caption: teks})
+					break
                   case 'converter':
 				case 'toimg':
 				if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
@@ -307,7 +316,7 @@ break
 					    case 'apaga':
 					client.deleteMessage(from, { id: mek.message.extendedTextMessage.contextInfo.stanzaId, remoteJid: from, fromMe: true })
 					break
-                  case 'ploay':   
+                  case 'play':   
 	          if (args.length < 1) return reply('Digite o nome da música')
 	            try{
                 play = body.slice(5)
@@ -505,6 +514,9 @@ client.sendMessage(from, hah, audio, {mimetype: 'audio/mp4', ptt:true, quoted: m
 fs.unlinkSync(ran)
 })
 break
+               case 'menu':
+               reply(`menu\n\n!info\n!converter\n!ping\n!loc\n!dono\n!tts\n!del\n!s\n!toimg\n\nmenu audio\n\n!lento\n!esquilo\n!grave\n!fast\n!estourar\!bass`)
+               break
                 case 'ping':
 					  const chatsIds = await client.chats.all()
                 const timestamp = speed();
