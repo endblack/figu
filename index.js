@@ -58,6 +58,7 @@ const vcard = 'BEGIN:VCARD\n'
 prefix = '!'
 namo = 'Otakinhos_sticker'
 ator = 'megah_gostosa'
+blocked = []
 /******* max gostoso**********/
 const ownerNumber = ["559184035474@s.whatsapp.net","559192136241@s.whatsapp.net","5511988985726@s.whatsapp.net","5514996541467@s.whatsap.net"] 
 
