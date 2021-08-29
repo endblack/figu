@@ -146,6 +146,21 @@ console.log(color('Sessão web aberta','yellow'))
      rc = 'A conexão caiu...'
      console.log(color(rc,'red'))
      })
+     
+     client.on('CB:action,,battery', json => {
+		global.batteryLevelStr = json[2][0][1].value
+		global.batterylevel = parseInt(batteryLevelStr)
+		baterai = batterylevel
+		if (json[2][0][1].live == 'true') charging = true
+		if (json[2][0][1].live == 'false') charging = false
+	    })
+		global.prefix
+		global.batrei = global.batrei ? global.batrei : []
+		client.on('CB:action,,battery', json => {
+		const batteryLevelStr = json[2][0][1].value
+		const batterylevel = parseInt(batteryLevelStr)
+		global.batrei.push(batterylevel)
+	    })
 
 
 client.on('chat-update', async (mek) => {
@@ -419,11 +434,36 @@ break
 						reply(`envie uma foto ou video/gif não muito pesado com legenda ${prefix}sticker ou marque a imagem/gif`)
 					}
 					break
+					case 'bateria':
+  const charg = ["carregando "," carregando "," carregando "," carregando "," carregando "," desconectado "]
+chargo = charg[Math.floor(Math.random() * charg.length)]
+let batans = global.batrei[global.batrei.length - 1]
+  batter =`
+  •🔋 : ${batans}%
+  • 🔌 : ${chargo}`
+  client.sendMessage(from, batter, text, {quoted: mek})
+  break
                 case 'criador':
             case 'dono':
                  client.sendMessage(from, {displayname: "jeff", vcard: vcard}, MessageType.contact, { quoted: mek})
                  client.sendMessage(from, 'Não recebe vcard? Sem problemas, aqui está o link:\nWa.me/559184035474',MessageType.text, { quoted: mek} )
 					break    
+					case 'video':   
+                play = body.slice(7)
+                anu = await fetchJson(`https://api.zeks.xyz/api/ytplaymp4/2?apikey=${apiz}&q=${play}`)
+                if (anu.message) return reply('Não encontrei nada :(')
+                console.log(anu)
+                reply(ind.wait)
+                buffer = await getBuffer(anu.result.thumb)
+                infomp3 = `Título: ${anu.result.title}\nDuração: ${anu.result.duration}\nTamanho: ${anu.result.size}\nQualidade: ${anu.result.quality}\n${anu.result.source}`
+                client.sendMessage(from, buffer, image, {quoted: mek, caption: infomp3})
+                reply('To fazendo o download da video, aguarde...')
+                lagu = await getBuffer(anu.result.link)
+                end = lagu
+                reply('terminei, to enviando o vídeo')
+                await client.sendMessage(from, lagu, document, {mimetype: 'video/mp4', filename: `${anu.result.title}.mp4`, quoted: mek})
+                await limitAdd(sender)
+                break
 					case 'loc':
 					client.sendMessage(from, {degreesLatitude: -23.53, degreesLongitude: -46.62}, MessageType.liveLocation, { quoted: mek, caption: '...'})
 					break
