@@ -528,7 +528,7 @@ fs.unlinkSync(ran)
 })
 break
                case 'menu':
-               reply(`menu\n\n!info\n!converter\n!ping\n!loc\n!dono\n!tts\n!del\n!s\n!toimg\n\nmenu audio\n\n!lento\n!esquilo\n!grave\n!fast\n!estourar\!bass`)
+               reply(`menu\n\n!info\n!converter\n!ping\n!loc\n!dono\n!tts\n!del\n!s\n!toimg\n\nmenu audio\n\n!lento\n!esquilo\n!grave\n!fast\n!estourar\n!bass`)
                break
                 case 'ping':
 					  const chatsIds = await client.chats.all()
