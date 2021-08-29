@@ -62,6 +62,18 @@ blocked = []
 /******* max gostoso**********/
 const ownerNumber = ["559184035474@s.whatsapp.net","559192136241@s.whatsapp.net","5511988985726@s.whatsapp.net","5514996541467@s.whatsap.net"] 
 
+function kyun(seconds){
+  function pad(s){
+    return (s < 10 ? '0' : '') + s;
+  }
+  var hours = Math.floor(seconds / (60*60));
+  var minutes = Math.floor(seconds % (60*60) / 60);
+  var seconds = Math.floor(seconds % 60);
+
+  //return pad(hours) + ':' + pad(minutes) + ':' + pad(seconds)
+  return `${pad(hours)} Horas, ${pad(minutes)} Minutos e ${pad(seconds)} Segundos`
+}
+
 function addMetadata(packname, author) {	
 	if (!packname) packname = 'WABot'; if (!author) author = 'Bot';	
 	author = author.replace(/[^a-zA-Z0-9]/g, '');
